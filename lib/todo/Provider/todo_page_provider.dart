@@ -16,6 +16,7 @@ final todoListProvider = StateNotifierProvider<TodoRepository, List<Todo>>((ref)
 
 final todoListFilter = StateProvider((_) => TodoListFilter.all);
 
+final currentTodo = Provider<Todo>((ref) => throw UnimplementedError());
 
 final uncompletedTodosCount = Provider<int>((ref) {
   return ref.watch(todoListProvider).where((todo) => !todo.completed).length;

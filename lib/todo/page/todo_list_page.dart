@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo_flutter/todo/Provider/todo_page_provider.dart';
 import 'package:todo_flutter/todo/domain/models/todo.dart';
 import 'package:todo_flutter/todo/domain/todo_repository.dart';
+import 'package:todo_flutter/todo/widgets/todo_item.dart';
 import 'package:todo_flutter/todo/widgets/todo_text_form.dart';
 import 'package:todo_flutter/todo/widgets/title_todo.dart';
 import 'package:todo_flutter/todo/widgets/tool_bar.dart';
@@ -44,64 +45,12 @@ class TodoListPage extends HookConsumerWidget {
                   },
                   child: ProviderScope(
                     overrides: [
-                      _currentTodo.overrideWithValue(todos[i]),
+                      currentTodo.overrideWithValue(todos[i]),
                     ],
                     child: const TodoItem(),
                   ),
                 )
               ]
             ])));
-  }
-}
-
-final _currentTodo = Provider<Todo>((ref) => throw UnimplementedError());
-
-//_currentTodoがスコープされなくてここに配置している、解決策が見つからない
-class TodoItem extends HookConsumerWidget {
-  const TodoItem({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final todo = ref.watch(_currentTodo);
-    final itemFocusNode = useFocusNode();
-    useListenable(itemFocusNode);
-    final isFocused = itemFocusNode.hasFocus;
-    final textEditingController = useTextEditingController();
-    final textFieldFocusNode = useFocusNode();
-
-    return Material(
-      color: Colors.white,
-      elevation: 6,
-      child: Focus(
-        focusNode: itemFocusNode,
-        onFocusChange: (focused) {
-          if (focused) {
-            textEditingController.text = todo.description;
-          } else {
-            ref
-                .read(todoListProvider.notifier)
-                .edit(id: todo.id, description: textEditingController.text);
-          }
-        },
-        child: ListTile(
-          onTap: () {
-            itemFocusNode.requestFocus();
-            textFieldFocusNode.requestFocus();
-          },
-          leading: Checkbox(
-            value: todo.completed,
-            onChanged: (value) =>
-                ref.read(todoListProvider.notifier).toggle(todo.id),
-          ),
-          title: isFocused
-              ? TextField(
-                  autofocus: true,
-                  focusNode: textFieldFocusNode,
-                  controller: textEditingController,
-                )
-              : Text(todo.description),
-        ),
-      ),
-    );
   }
 }
