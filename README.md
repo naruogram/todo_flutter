@@ -1,2 +1,3 @@
 # todo_flutter
- 練習用
+RiverPod Freezedを使ったTodoアプリ
+練習用
