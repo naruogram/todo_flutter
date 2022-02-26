@@ -21,7 +21,7 @@ class Toolbar extends HookConsumerWidget {
         children: [
           Expanded(
             child: Text(
-              '${ref.watch(uncompletedTodosCount).toString()} items left',
+              '${ref.watch(uncompletedTodosCount).toString()}個のタスク',
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -36,7 +36,7 @@ class Toolbar extends HookConsumerWidget {
                 foregroundColor:
                     MaterialStateProperty.all(textColorFor(TodoListFilter.all)),
               ),
-              child: const Text('All'),
+              child: const Text('全て'),
             ),
           ),
           Tooltip(
@@ -51,7 +51,7 @@ class Toolbar extends HookConsumerWidget {
                   textColorFor(TodoListFilter.active),
                 ),
               ),
-              child: const Text('Active'),
+              child: const Text('挑戦中'),
             ),
           ),
           Tooltip(
@@ -66,7 +66,7 @@ class Toolbar extends HookConsumerWidget {
                   textColorFor(TodoListFilter.completed),
                 ),
               ),
-              child: const Text('Completed'),
+              child: const Text('達成'),
             ),
           ),
         ],

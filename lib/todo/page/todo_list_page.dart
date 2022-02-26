@@ -16,21 +16,22 @@ class TodoListPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final todos = ref.watch(filteredTodos);
-    TextEditingController todoController=TextEditingController();
+    TextEditingController todoController = TextEditingController();
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
             body: ListView(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 100),
                 children: [
-              const BasicTitle(),
+              const TodoTitle(),
+              const SizedBox(height: 50),
               TodoTextForm(
                 formKey: addTodoKey,
                 controller: todoController,
                 hintText: "目標を追加してください",
               ),
-              const SizedBox(height: 42),
+              const SizedBox(height: 50),
               const Toolbar(),
               if (todos.isNotEmpty) const Divider(height: 0),
               for (var i = 0; i < todos.length; i++) ...[
@@ -54,6 +55,7 @@ class TodoListPage extends HookConsumerWidget {
 
 final _currentTodo = Provider<Todo>((ref) => throw UnimplementedError());
 
+//_currentTodoがスコープされなくてここに配置している、解決策が見つからない
 class TodoItem extends HookConsumerWidget {
   const TodoItem({Key? key}) : super(key: key);
 

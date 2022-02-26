@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BasicTitle extends StatelessWidget {
-  const BasicTitle({
+class TodoTitle extends StatelessWidget {
+  const TodoTitle({
     Key? key,
   }) : super(key: key);
 
@@ -12,8 +12,7 @@ class BasicTitle extends StatelessWidget {
       "ToDoリスト",
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: Color.fromARGB(38, 47, 47, 247),
-        fontSize: 100,
+        fontSize: 50,
         fontWeight: FontWeight.w100,
         fontFamily: 'Helvetica Neue',
       ),

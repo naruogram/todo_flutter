@@ -3,6 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo_flutter/todo/Provider/todo_page_provider.dart';
 
+// ここにwidgetsとしておきたい
+
 // class TodoItem extends HookConsumerWidget {
 //   const TodoItem({Key? key}) : super(key: key);
 
