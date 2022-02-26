@@ -3,7 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:todo_flutter/todo/Provider/todo_page_provider.dart';
-import 'package:todo_flutter/todo/model/todo_model.dart';
+import 'package:todo_flutter/todo/domain/models/todo.dart';
+import 'package:todo_flutter/todo/domain/todo_repository.dart';
 import 'package:todo_flutter/todo/widgets/todo_text_form.dart';
 import 'package:todo_flutter/todo/widgets/title_todo.dart';
 import 'package:todo_flutter/todo/widgets/tool_bar.dart';

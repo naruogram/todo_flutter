@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:todo_flutter/todo/model/todo_model.dart';
+import 'package:todo_flutter/todo/domain/models/todo.dart';
+import 'package:todo_flutter/todo/domain/todo_repository.dart';
 
 
 enum TodoListFilter {
@@ -9,8 +10,8 @@ enum TodoListFilter {
   completed,
 }
 
-final todoListProvider = StateNotifierProvider<TodoMethod, List<Todo>>((ref) {
-  return TodoMethod(const []);
+final todoListProvider = StateNotifierProvider<TodoRepository, List<Todo>>((ref) {
+  return TodoRepository(const []);
 });
 
 final todoListFilter = StateProvider((_) => TodoListFilter.all);

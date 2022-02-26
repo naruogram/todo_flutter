@@ -37,8 +37,8 @@ dependencies:
   uuid: 
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^1.0.0
-
-  
+  freezed_annotation:
+  json_serializable:
 
 
 dev_dependencies:

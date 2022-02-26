@@ -1,32 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:todo_flutter/todo/domain/models/todo.dart';
 import 'package:uuid/uuid.dart';
 
 const _uuid = Uuid();
 
 @immutable
-class Todo {
-  const Todo({
-    required this.description,
-    required this.id,
-    // required this.time,
-    this.completed = false,
-  });
 
-  final String id;
-  final String description;
-  // final String time;
-  final bool completed;
 
-  @override
-  String toString() {
-    return 'Todo(description: $description, completed: $completed)';
-  }
-}
-
-class TodoMethod extends StateNotifier<List<Todo>> {
-  TodoMethod([List<Todo>? initialTodos]) : super(initialTodos ?? []);
+class TodoRepository extends StateNotifier<List<Todo>> {
+  TodoRepository([List<Todo>? initialTodos]) : super(initialTodos ?? []);
 
   void add(String description){
     state = [
