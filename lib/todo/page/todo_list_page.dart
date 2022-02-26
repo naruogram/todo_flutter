@@ -17,7 +17,9 @@ class TodoListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //todosはフィルターしたtodoを常に監視して参照している
     final todos = ref.watch(filteredTodos);
+
     TextEditingController todoController = TextEditingController();
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -41,10 +43,12 @@ class TodoListPage extends HookConsumerWidget {
                 Dismissible(
                   key: ValueKey(todos[i].id),
                   onDismissed: (_) {
+                    //readは任意のタイミングに一回だけ読み込む?
                     ref.read(todoListProvider.notifier).remove(todos[i]);
                   },
                   child: ProviderScope(
                     overrides: [
+                      //todoが削除されることを監視している?
                       currentTodo.overrideWithValue(todos[i]),
                     ],
                     child: const TodoItem(),

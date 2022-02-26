@@ -21,6 +21,7 @@ class Toolbar extends HookConsumerWidget {
         children: [
           Expanded(
             child: Text(
+              //完了していないタスクを監視して数を数えている
               '${ref.watch(uncompletedTodosCount).toString()}個のタスク',
               overflow: TextOverflow.ellipsis,
             ),
@@ -30,6 +31,7 @@ class Toolbar extends HookConsumerWidget {
             message: '全て',
             child: TextButton(
               onPressed: () =>
+              //enumで定義したものを参照してフィルターをかける
                   ref.read(todoListFilter.notifier).state = TodoListFilter.all,
               style: ButtonStyle(
                 visualDensity: VisualDensity.compact,

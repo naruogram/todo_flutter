@@ -31,6 +31,7 @@ class TodoTextForm extends HookConsumerWidget {
           hintText: hintText ?? '',
         ),
         onFieldSubmitted: (value) {
+          //addメソッドをここで呼ぶ
           ref.read(todoListProvider.notifier).add(value);
           controller.clear();
         },

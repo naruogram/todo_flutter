@@ -24,11 +24,7 @@ class TodoRepository extends StateNotifier<List<Todo>> {
     state = [
       for (final todo in state)
         if (todo.id == id)
-          Todo(
-            id: todo.id,
-            completed: !todo.completed,
-            description: todo.description,
-          )
+          todo.copyWith(completed: !todo.completed)
         else
           todo,
     ];
